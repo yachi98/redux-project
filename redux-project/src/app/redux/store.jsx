@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useSelector, TypedUseSelectorHook } from "react-redux";
-import counterReducer from "./counterSlice";
+import stocksReducer from "./features/stocks";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    stocksData: stocksReducer,
   },
 });
 
 export const useAppDispatch = () => store.dispatch;
 export const RootState = store.getState();
-export const useAppSelector = (state) => state.counter;
+export const useAppSelector = (state) => state;

@@ -2,13 +2,15 @@
 
 import styles from "./page.module.css";
 import { useEffect } from "react";
-import { useAppSelector } from "@/redux/store";
+import { useAppSelector } from "./redux/store";
 import { useDispatch } from "react-redux";
 import { fetchStocks } from "./redux/features/stocksSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
   const { stocksData } = useAppSelector((state) => state.stocksData);
+  const metaData = stocksData["Meta Data"];
+  console.log(stocksData);
 
   useEffect(() => {
     dispatch(fetchStocks());
@@ -18,17 +20,16 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.ctas}>
-          {Object.values(
-            stocksData["MetaData"].map((stock) => <li>{stock}</li>)
-          )}
+          <ul>
+            {metaData &&
+              Object.entries(metaData).map(([key, value]) => (
+                <li key={key}>
+                  <strong>{key}:</strong> {value}
+                </li>
+              ))}
+          </ul>
         </div>
       </main>
     </div>
   );
-}
-
-{
-  /* {stocksData.metadata.symbol.map((stock) => (
-            <span key={stock}>{stock.symbol}</span>
-          ))} */
 }

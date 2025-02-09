@@ -14,7 +14,7 @@ export const fetchStocks = createAsyncThunk(
       const response = await axios.get(
         "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSCO.LON&outputsize=full&apikey=demo"
       );
-      console.log("API Response:", response.data);
+      // console.log("API Response:", response.data);
       return response.data;
     } catch (error) {
       console.error("API Error:", error);

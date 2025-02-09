@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useSelector, TypedUseSelectorHook } from "react-redux";
-import { useAppSelector } from "@/redux/store";
 import stocksReducer from "./features/stocksSlice";
 
 export const store = configureStore({

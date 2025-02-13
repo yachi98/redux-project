@@ -8,13 +8,24 @@ import { fetchStocks } from "./redux/features/stocksSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { stocksData } = useAppSelector((state) => state.stocksData);
-  const metaData = stocksData["Meta Data"];
-  console.log(stocksData);
+  const { stocksData, hasError, isLoading } = useAppSelector(
+    (state) => state.stocksData
+  );
+  const metaData = stocksData["Time Series (Daily)"];
+
+  // console.log("stocks data", stocksData);
 
   useEffect(() => {
     dispatch(fetchStocks());
   }, []);
+
+  if (hasError) {
+    return <div>Error fetching data</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.page}>
@@ -23,8 +34,8 @@ export default function Home() {
           <ul>
             {metaData &&
               Object.entries(metaData).map(([key, value]) => (
-                <li key={key}>
-                  <strong>{key}:</strong> {value}
+                <li style={{ color: "white" }} key={key}>
+                  <strong>{key}:</strong> {JSON.stringify(value)}
                 </li>
               ))}
           </ul>

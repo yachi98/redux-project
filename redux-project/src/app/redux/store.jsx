@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { useSelector, TypedUseSelectorHook } from "react-redux";
+import { useSelector, TypedUseSelectorHook, useDispatch } from "react-redux";
 import stocksReducer from "./features/stocksSlice";
 
 export const store = configureStore({
@@ -8,6 +8,8 @@ export const store = configureStore({
   },
 });
 
-export const useAppDispatch = () => store.dispatch;
-export const RootState = store.getState();
-export const useAppSelector = (state) => store.getState();
+// export const useAppDispatch = () => store.dispatch;
+// export const RootState = store.getState();
+// export const useAppSelector = () => store.getState();
+export const useAppDispatch = () => useDispatch();
+export const useAppSelector = useSelector;

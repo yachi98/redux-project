@@ -32,11 +32,9 @@ const stocksSlice = createSlice({
       state.hasError = false;
     });
     builder.addCase(fetchStocks.fulfilled, (state, action) => {
-      console.log("Fetched Data:", action.payload);
       state.isLoading = false;
       state.hasError = false;
       state.stocksData = action.payload;
-      console.log("stocks", state.stocksData);
     });
     builder.addCase(fetchStocks.rejected, (state) => {
       state.isLoading = false;

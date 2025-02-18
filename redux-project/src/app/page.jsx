@@ -12,14 +12,13 @@ export default function Home() {
     (state) => state.stocksData
   );
   // const metaData = stocksData["Time Series (Daily)"];
-  // const metaData = stocksData["Time Series (Daily)"] || {};
+  const metaData = stocksData["Time Series (Daily)"] || {};
 
   console.log("stocks data 2", stocksData);
 
   useEffect(() => {
-    console.log("Fetching stock data...");
     dispatch(fetchStocks());
-  }, [dispatch]);
+  }, []);
 
   if (hasError) {
     return <div>Error fetching data</div>;
@@ -35,7 +34,7 @@ export default function Home() {
         <div className={styles.ctas}>
           <ul>
             {stocksData &&
-              Object.entries(stocksData).map(([key, value]) => (
+              Object.entries(metaData).map(([key, value]) => (
                 <li style={{ color: "white" }} key={key}>
                   <strong>{key}:</strong> {JSON.stringify(value)}
                 </li>

@@ -79,21 +79,3 @@ const StockBarChart = () => {
 };
 
 export default StockBarChart;
-
-{
-  /* <ResponsiveContainer width={900} height={400}>
-<LineChart width={900} height={400} data={chartData}>
-  <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
-  <YAxis />
-  <Tooltip />
-  <Legend />
-  <Line
-    type="monotone"
-    dataKey="pv"
-    stroke="#8884d8"
-    activeDot={{ r: 8 }}
-  />
-  <Line type="monotone" dataKey="uv" stroke="#fb8b23" />
-</LineChart>
-</ResponsiveContainer> */
-}

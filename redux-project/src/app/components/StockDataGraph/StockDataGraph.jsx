@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppSelector } from "../redux/store";
+import { useAppSelector } from "../../redux/store";
 
 const StockDataGraph = () => {
   const { stocksData, hasError, isLoading } = useAppSelector(

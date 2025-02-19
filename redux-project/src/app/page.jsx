@@ -4,7 +4,8 @@ import styles from "./page.module.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchStocks } from "./redux/features/stocksSlice";
-import StockDataGraph from "./components/StockDataGraph";
+// import StockDataGraph from "./components/StockDataGraph";
+import StockBarChart from "./components/StockBarChart";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -17,7 +18,8 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.ctas}>
-          <StockDataGraph />
+          {/* <StockDataGraph /> */}
+          <StockBarChart />
         </div>
       </main>
     </div>

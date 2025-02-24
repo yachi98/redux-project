@@ -43,21 +43,19 @@ const StockBarChart = () => {
   }
   const metaData = stocksData["Time Series (Daily)"];
 
-  if (!metaData) {
-    return <p style={{ color: "white" }}>No stock data available</p>;
-  }
-
-  const chartData = Object.entries(metaData)
-    .slice(0, 30)
-    .map(([date, values]) => ({
-      name: date,
-      value: parseFloat(values["1. open"]),
-      high: parseFloat(values["2. high"]),
-      low: parseFloat(values["3. low"]),
-      close: parseFloat(values["4. close"]),
-      volume: parseInt(values["5. volume"]) / 1000000,
-    }))
-    .reverse();
+  const chartData =
+    metaData &&
+    Object.entries(metaData)
+      .slice(0, 30)
+      .map(([date, values]) => ({
+        name: date,
+        value: parseFloat(values["1. open"]),
+        high: parseFloat(values["2. high"]),
+        low: parseFloat(values["3. low"]),
+        close: parseFloat(values["4. close"]),
+        volume: parseInt(values["5. volume"]) / 1000000,
+      }))
+      .reverse();
 
   return (
     <ResponsiveContainer width={900} height={400}>

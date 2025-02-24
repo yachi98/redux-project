@@ -33,18 +33,18 @@ const StockBarChart = () => {
   const { stocksData, isLoading, hasError } = useAppSelector(
     (state) => state.stocksData
   );
-  const metaData = stocksData["Time Series (Daily)"];
 
-  if (!metaData) {
-    return <p style={{ color: "white" }}>No stock data available</p>;
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   if (hasError) {
     return <div>Error fetching data</div>;
   }
+  const metaData = stocksData["Time Series (Daily)"];
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  if (!metaData) {
+    return <p style={{ color: "white" }}>No stock data available</p>;
   }
 
   const chartData = Object.entries(metaData)
